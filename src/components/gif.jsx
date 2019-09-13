@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 class Gif extends Component {
-  handleClick = () => {
-    if (this.props.selectGifYo) {
-      this.props.selectGifYo(this.props.id);
+  handleClick = ({ selectGifYo, id }) => {
+    if (selectGifYo) {
+      selectGifYo(id);
     }
   }
 
-  render() {
-    const src = `https://media.giphy.com/media/${this.props.id}/giphy.gif`;
+  render({ id, handleClick }) {
+    const src = `https://media.giphy.com/media/${id}/giphy.gif`;
     return (
-      <img src={src} alt="" className="gif" onClick={this.handleClick} />
+      <img src={src} alt="" className="gif" onClick={handleClick} />
     );
   }
 }
